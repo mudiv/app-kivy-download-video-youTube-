@@ -1,0 +1,117 @@
+#:import arabic_reshaper arabic_reshaper
+#:import get_display bidi.algorithm.get_display
+#:import hex kivy.utils.get_color_from_hex
+FloatLayout:
+	MDProgressBar:
+		id : VA
+		value: 0
+		size_hint_x:.9
+		pos_hint: {"center_x": .5, "center_y": .3}	
+	MDIconButton:
+		icon:"alert-box-outline"	
+		pos_hint: {"center_x": .52, "center_y": .8}
+		ripple_scale:0
+		size_hint_x:1
+		user_font_size:"20sp"
+		theme_text_color:'Custom'
+		text_color:hex('#57c2f8')
+		on_press: app.open_ga()
+		
+	MDBoxLayout:
+	    adaptive_height: True
+	    md_bg_color: 0,0,0,0
+	    pos_hint: {"top" : 1}
+	    size_hint_y: .13
+	    
+	    MDSeparator:   
+	MDLabel: 
+		pos_hint: {"center_x": .54, "center_y": .95}
+		text: '[size=60][font=fonts/Ubuntu-Medium.ttf]YOUTUBE[/size]'
+		markup:True	
+		theme_text_color: "Custom"
+		text_color: hex("#2b2623")					    
+	MDLabel: 		
+		pos_hint: {"center_x": .54, "center_y": .92}
+		text: '[size=60][font=fonts/Ubuntu-Medium.ttf]DOWNLOADER[/size]'
+		markup:True
+		theme_text_color: "Custom"
+		text_color: hex("#57c2f8")			 
+
+	MDLabel: 		
+		pos_hint: {"center_x": .55, "center_y": .8}
+		text: '[size=50][font=fonts/Ubuntu-Medium.ttf]Enter YouTube URL[/size]'
+		markup:True
+	
+	
+	MDFloatLayout: 
+		size_hint: .9,.08
+		pos_hint: {'center_x':0.5,'center_y':.72}		    
+		canvas: 
+			Color: 
+				rgba: hex("#F87474") 
+			RoundedRectangle: 
+				pos: self.pos
+				size: self.size	   
+				radius:[27]	
+	TextInput:
+		id : input
+		hint_text: "Enter YouTube Link/URL"
+		hint_text_color : hex("#F9F2ED")
+		size_hint: 1,None
+		icon_right: 'key-variant'
+		pos_hint: {'center_x':0.5,'center_y':0.72}	    	
+		multilien:False
+		cursor_color: hex("f49bac")
+		cursor_width : "2sp"
+		foreground_color: 1,1,1,1
+		background_color: 0,0,0,0
+		padding:15
+		size_hint_x:.87
+		font_name:'fonts/Ubuntu-Medium.ttf'
+		font_size:'18sp' 	   
+	MDFloatLayout:
+		
+		id : info
+		size_hint: .9, .3
+		pos_hint: {'center_x':0.5,'center_y':.45}	
+		md_bg_color: hex("#f0f1f2") 
+		MDLabel:
+			text: '[size=40][font=fonts/Ubuntu-Medium.ttf]Video Preview goes here[/size]'
+			
+			pos_hint: {"center_x": 0.77, "center_y": 0.24}
+			markup:True			
+		Image:
+			id : img_move
+			source:"img/mellow-film-strip.png"
+					
+			size_hint: None, None
+			size: "200dp", "200dp"
+
+			pos_hint: {'center_x':0.5,'center_y':0.55}
+		
+
+	MDFillRoundFlatButton: 
+		text: '[size=50][font=fonts/Ubuntu-Medium.ttf]Download Video[/size]'		 				
+		pos_hint: {'center_x':0.5,'center_y':.1}
+		size_hint: 0.9, None
+		font_size: "18sp"
+		md_bg_color: hex("#57c2f8")	
+		on_press: app.Thread()
+	MDTextButton:
+		text: '[size=30][font=fonts/Ubuntu-Medium.ttf]Developer Muntazir[/size]'	
+		pos_hint: {"center_x": .5, "center_y": .03}	 
+		color:hex("#f97c8d")		
+		custom_color: hex("#f97c8d")
+		markup:True	
+		on_press: app.open_ga()
+	MDDropDownItem:			 
+		id: drop_item	
+		pos_hint: {'center_x': 0.15, 'center_y': .58}
+		text: "720p"
+		on_release: app.Menu()
+		
+	MDLabel: 	
+		id: lab			
+		pos_hint: {"center_x": .89, "center_y": .25}
+		text: ""
+		markup:True		
